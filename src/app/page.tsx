@@ -1,5 +1,12 @@
+import { Header } from "@/components/header"
+
 export default function Home() {
   return (
-    <h1>Meu lindo</h1>
+    <>
+      <Header />
+      <div>
+        <h1>Home</h1>
+      </div>
+    </>
   );
 }
