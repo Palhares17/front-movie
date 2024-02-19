@@ -2,7 +2,6 @@ import { api } from '@/api';
 import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 export async function getMovies() {
   const response = await fetch(api.url, {
