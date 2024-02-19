@@ -3,11 +3,11 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <header>
-      <h1>My Movies</h1>
+    <header className='px-16 py-5 flex justify-between items-center border-b border-solid border-gray-900 bg-black'>
+      <h1 className='font-bold text-xl'>My Movies</h1>
       <ul>
         <li>
-          <Link href="/categories">Categorias</Link>
+          <Link href="/categories" className='font-medium'>Categorias</Link>
         </li>
       </ul>
     </header>
