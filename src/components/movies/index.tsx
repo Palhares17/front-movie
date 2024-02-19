@@ -22,17 +22,17 @@ export const Movies = async () => {
     <main className="px-16 py-16">
       <h1 className="text-3xl font-bold">Todos os filmes </h1>
 
-      <ul className="grid grid-cols-6 gap-6">
+      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:justify-center items-center">
         {
           movies.results.map((item: any) => (
             <li key={item.id}>
-              <Link href={`/movies/${item.id}`}>
+              <Link href={`/datails/${item.id}`}>
                 <Image
                   src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                   alt={item.title}
-                  width={200}
-                  height={200}
-                  className="mt-6 border- rounded-xl"
+                  width={300}
+                  height={300}
+                  className="mt-6 border- rounded-xl hover:scale-105 transition duration-300 ease-in-out"
                 />
                 <p className="font-bold text-base mt-3">{item.title}</p>
               </Link>

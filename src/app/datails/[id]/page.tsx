@@ -27,22 +27,22 @@ export default async function produto() {
   return (
     <>
       <Header />
-      <main className="px-16 py-16">
-        <h1 className="text-3xl font-bold mb-6">Todos os filmes </h1>
-
-        <section className='flex gap-16 w-3/4'>
-          <img
-            src={`https://image.tmdb.org/t/p/original${datailsMovies.poster_path}`}
-            alt={datailsMovies.title}
-            width={300}
-            height={300}
-            className="border- rounded-xl"
-          />
-          <div>
-            <h2 className="font-bold text-3xl mb-4">{datailsMovies.title}</h2>
-            <p className=''>{datailsMovies.overview}</p>
-          </div>
-        </section>
+      <main className="p-16 ">
+        <div className='md:flex flex-col items-center'>
+          <section className='md:flex md:w-3/4 md:gap-16'>
+            <img
+              src={`https://image.tmdb.org/t/p/original${datailsMovies.poster_path}`}
+              alt={datailsMovies.title}
+              width={300}
+              height={300}
+              className="border- rounded-xl mb-7"
+            />
+            <div>
+              <h2 className="font-bold text-3xl mb-4">{datailsMovies.title}</h2>
+              <p className=''>{datailsMovies.overview}</p>
+            </div>
+          </section>
+        </div>
       </main>
     </>
   )
