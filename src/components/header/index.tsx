@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link'
 import React from 'react'
+import { SearchForm } from '../searchForm'
 
 export const Header = () => {
   return (
@@ -7,6 +10,7 @@ export const Header = () => {
       <Link href="/">
         <h1 className='font-bold text-xl'>My Movies</h1>
       </Link>
+      <SearchForm />
       <ul>
         <li>
           <Link href="/categories" className='font-medium'>Categorias</Link>
