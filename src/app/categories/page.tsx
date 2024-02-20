@@ -3,5 +3,5 @@ export default function NewPage() {
     <div>
       <h1>categories</h1>
     </div>
-  )
+  );
 }

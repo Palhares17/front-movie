@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
-// const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "My Movies",
   description: "Usando a API do TMDB para criar um site de filmes",

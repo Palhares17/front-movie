@@ -1,4 +1,4 @@
-import { Header } from "@/components/header"
+import { Header } from "@/components/header";
 import { Movies } from "@/components/movies";
 
 export default async function Home() {
