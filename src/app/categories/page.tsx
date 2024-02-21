@@ -1,7 +1,10 @@
+import { Header } from '@/components/header';
+
 export default function NewPage() {
-  return (
-    <div>
-      <h1>categories</h1>
-    </div>
-  );
+	return (
+		<div>
+			<Header />
+			<h1>categories</h1>
+		</div>
+	);
 }
