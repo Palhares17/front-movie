@@ -20,8 +20,9 @@ const getMoviesID = async (id: Number) => {
   return data;
 };
 
-export default async function produto() {
-  const params = useParams(); // Hook para pegar os parametros da URL, porém só funciona quando for renderizado na parte do cliente
+export default async function produto({params}: {params: {id: string}}) {
+ // const params = useParams();  Hook para pegar os parametros da URL, porém só funciona quando for renderizado na parte do cliente
+
   const id = parseInt(Array.isArray(params.id) ? params.id[0] : params.id);
 
   const datailsMovies = await getMoviesID(id);

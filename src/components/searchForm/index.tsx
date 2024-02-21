@@ -10,7 +10,7 @@ export const SearchForm = () => {
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log((event.target as HTMLFormElement)["search"].value);
+    // console.log((event.target as HTMLFormElement)["search"].value);
 
     router.push(`/searchMovie/${query}`);
   };
