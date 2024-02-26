@@ -1,7 +1,11 @@
+import { Container } from '../LayoutComponent/Conteiner';
+
 export default function Home() {
 	return (
-		<div>
-			<h1></h1>
-		</div>
+		<Container>
+			<h1 className="">
+				Meu pau de chapéu 
+			</h1>
+		</Container>
 	);
 }
