@@ -1,0 +1,27 @@
+.Button {
+	display: flex;
+	place-items: center;
+	cursor: pointer;
+	background: #222a32b6;
+	height: 4rem;	
+	border-radius: 1rem;
+	transition: 0.3s;
+	position: relative;
+}
+
+.menu {
+	border-top: 2px solid white;
+  width: 24px;
+}
+
+.menu::before {
+	content: '';
+	display: block;
+	width: 24px;
+	height: 2px;
+	border-top: 2px solid white;
+	transition: 0.3s;
+	position: relative;
+	margin-top: 5px;
+	text-align: left;
+}

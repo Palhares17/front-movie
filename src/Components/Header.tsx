@@ -1,9 +1,14 @@
+'use client';
+
 import React from 'react';
 import { Container } from '../LayoutComponent/Conteiner';
 import Link from 'next/link';
 import { BackgroundNav } from '@/LayoutComponent/BackgroundNav';
+import styles from './Header.module.css';
 
 export const Header = () => {
+	// const [isOpen, setIsOpen] = React.useState(false);
+
 	return (
 		<header className='my-6'>
 			<Container>
@@ -33,12 +38,11 @@ export const Header = () => {
 						</nav>
 					</BackgroundNav>
 
-					<BackgroundNav>
-						<button className='flex flex-col gap-1 items-end px-6'>
-							<span className='inline-block w-6 bg-white border-white h-[2px]'></span>
-							<span className='inline-block w-4 bg-white border-white h-[2px]'></span>
-						</button>
-					</BackgroundNav>
+					<button className={styles.Button} >
+						<div className='flex flex-col gap-2 items-end px-6'>
+							<span className={styles.menu}></span>
+						</div>
+					</button>
 				</div>
 			</Container>
 		</header>
