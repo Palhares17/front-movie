@@ -1,95 +1,49 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import ButtonDetails from '@/components/functional/button';
+import Image from 'next/image';
+import styles from './home.module.css';
+import Cards from '@/components/functional/cards';
+import Slider from '@/components/functional/Slider';
+import { SwiperSlide } from 'swiper/react';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <main>
+      <section>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src="/assets/superman.png"
+          width={1956}
+          height={897}
+          alt="banner"
+          className={`${styles.image}`}
         />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+        <div className={`${styles.titleFilm} ${styles.position}`}>
+          <h1 className="h1-48">Nome do filme</h1>
+          <p className={`${styles.width} p-16`}>
+            A jornada de Paul Atreides continua. Ele está determinado a buscar
+            vingança contra aqueles que destruíram sua família e seu lar. Com a
+            ajuda de Chani e dos Fremen, ele embarca em uma jornada espiritual,
+            mística e marcial. Se torna Dib, o líder messiânico dos Fremen,
+            enquanto luta para evitar um futuro sombrio que ele testemunhou em
+            visões. No entanto, suas ações inadvertidamente desencadeiam uma
+            Guerra Santa em seu nome, que se espalha pelo universo conhecido.
+            Enquanto enfrenta escolhas difíceis entre o amor por Chani e o
+            destino de seu povo, Paul precisa usar suas habilidades e
+            conhecimentos para evitar o terrível futuro que previu.
           </p>
-        </a>
-      </div>
+
+          <ButtonDetails text="ver detalhes" />
+        </div>
+      </section>
+
+      <section className={`margin-64`}>
+        <h3 className={`h3-32 container`}>Trading</h3>
+        <Slider>
+          <SwiperSlide>
+						<Cards title='' text='' image=''/>
+					</SwiperSlide>
+        </Slider>
+      </section>
     </main>
   );
 }

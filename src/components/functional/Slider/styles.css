@@ -1,0 +1,19 @@
+.swiper {
+  padding: 0 48px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	margin: 0 2rem;
+  color: var(--gray-400);
+	padding: 1.5rem;
+	border-radius: 12px;
+	background-color: #ffffff1e;
+	--swiper-navigation-size: 24px;
+	font-weight: 700;
+}

@@ -1,0 +1,18 @@
+.button {
+  font-family: var(--font-title);
+  font-weight: 700;
+  padding: 0.675rem 1rem;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  width: 10.5rem;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: #2859a8;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
+}
