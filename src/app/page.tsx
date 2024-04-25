@@ -9,11 +9,12 @@ import getMovies from '@/api/actions/getMovies';
 import { TypeResultMovies } from '@/api/types/movies';
 import getSeries from '@/api/actions/getSeries';
 import { TypeResultsSeries } from '@/api/types/series';
+import SectionHome from '@/components/ui/sectionHome';
 
 export default async function Home() {
   const tranding = await getTrading();
   const movies = await getMovies();
-	const series = await getSeries();
+  const series = await getSeries();
 
   return (
     <main>
@@ -45,8 +46,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className={`margin-64`}>
-        <h3 className={`h3-32 container`}>Tendências</h3>
+      <SectionHome text="Tendências">
         <Slider>
           {tranding.map((item: TypeResultTrading) => {
             return (
@@ -58,10 +58,9 @@ export default async function Home() {
             );
           })}
         </Slider>
-      </section>
+      </SectionHome>
 
-      <section className={`margin-64`}>
-        <h3 className={`h3-32 container`}>Filmes</h3>
+      <SectionHome text="Filmes">
         <Slider>
           {movies.map((item: TypeResultMovies) => {
             return (
@@ -73,22 +72,17 @@ export default async function Home() {
             );
           })}
         </Slider>
-      </section>
+      </SectionHome>
 
-      <section className={`margin-64`}>
-        <h3 className={`h3-32 container`}>Séries</h3>
+      <SectionHome text="Filmes">
         <Slider>
           {series.map((item: TypeResultsSeries) => {
             return (
-              <Cards
-                title={item.name}
-                image={item.poster_path}
-                key={item.id}
-              />
+              <Cards title={item.name} image={item.poster_path} key={item.id} />
             );
           })}
         </Slider>
-      </section>
+      </SectionHome>
     </main>
   );
 }
