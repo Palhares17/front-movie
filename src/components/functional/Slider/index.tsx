@@ -16,8 +16,6 @@ interface TypeSlider {
 }
 
 export default function Slider({ children }: TypeSlider) {
-  const swiper = useSwiper();
-
   return (
     <div className="slider">
       <Swiper
@@ -28,10 +26,10 @@ export default function Slider({ children }: TypeSlider) {
         scrollbar={{ draggable: true }}
         loop
       >
-        {children}
-        {/* <SwiperSlide>
-          <Cards title="Nome do filme" image="image" text="" />
-        </SwiperSlide> */}
+        {Array.isArray(children) &&
+          children.map((item, index) => {
+            return <SwiperSlide key={index}>{item}</SwiperSlide>;
+          })}
       </Swiper>
     </div>
   );

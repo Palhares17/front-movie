@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styles from './home.module.css';
 import Cards from '@/components/functional/cards';
 import Slider from '@/components/functional/Slider';
-import { SwiperSlide } from 'swiper/react';
 
 export default function Home() {
   return (
@@ -39,9 +38,17 @@ export default function Home() {
       <section className={`margin-64`}>
         <h3 className={`h3-32 container`}>Trading</h3>
         <Slider>
-          <SwiperSlide>
-						<Cards title='' text='' image=''/>
-					</SwiperSlide>
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
+          <Cards title="" text="" image="" />
         </Slider>
       </section>
     </main>
