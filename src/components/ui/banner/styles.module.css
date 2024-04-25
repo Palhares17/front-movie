@@ -1,0 +1,25 @@
+.titleFilm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.position {
+  position: absolute;
+  left: 9rem;
+  bottom: 25%;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+  border-radius: 48px;
+	filter: brightness(0.3);
+	height: calc(100vh - 96px);
+	object-fit: cover;
+}
+
+.width {
+  width: 863px;
+}

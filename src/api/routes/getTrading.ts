@@ -14,7 +14,7 @@ export default async function getTrading() {
     }
   );
   const data = await response.json();
-	const dataResults = data.results;
+	const dataResults = data.results as TypeResultTrading[];
 
   return dataResults;
 }

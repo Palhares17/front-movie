@@ -1,5 +1,7 @@
 'use server';
 
+import { TypeResultMovies } from "../types/movies";
+
 export default async function getMovies() {
   const response = await fetch(
     'https://api.themoviedb.org/3/trending/movie/week?language=pt-BR',
@@ -13,7 +15,7 @@ export default async function getMovies() {
   );
 
   const data = await response.json();
-	const dataResults = data.results;
+	const dataResults = data.results as TypeResultMovies[];
 	
 	return dataResults;
 }

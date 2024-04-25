@@ -10,6 +10,7 @@ import getTrading from '@/api/routes/getTrading';
 import getMovies from '@/api/routes/getMovies';
 import getSeries from '@/api/routes/getSeries';
 import { TypeResultTrading } from '@/api/types/trading';
+import Banner from '@/components/ui/banner';
 
 export default async function Home() {
   const tranding = await getTrading();
@@ -18,24 +19,9 @@ export default async function Home() {
 
   return (
     <main>
-      <section>
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${movies[4].backdrop_path}`}
-          width={1956}
-          height={897}
-          alt="banner"
-          className={`${styles.image}`}
-        />
-
-        <div className={`${styles.titleFilm} ${styles.position}`}>
-          <h1 className="h1-48">{movies[4].title}</h1>
-          <p className={`${styles.width} p-16`}>{movies[4].overview}</p>
-
-          <ButtonDetails text="ver detalhes" />
-        </div>
-      </section>
-
-      <SectionHome text="Tendências">	
+      <Banner props={movies} />
+			
+      <SectionHome text="Tendências">
         <Slider>
           {tranding.map((item: TypeResultTrading) => {
             return (
