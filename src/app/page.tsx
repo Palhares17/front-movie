@@ -3,8 +3,18 @@ import Image from 'next/image';
 import styles from './home.module.css';
 import Cards from '@/components/functional/cards';
 import Slider from '@/components/functional/Slider';
+import getTrading from '@/api/actions/getTrading';
+import { TypeResultTrading } from '@/api/types/trading';
+import getMovies from '@/api/actions/getMovies';
+import { TypeResultMovies } from '@/api/types/movies';
+import getSeries from '@/api/actions/getSeries';
+import { TypeResultsSeries } from '@/api/types/series';
 
-export default function Home() {
+export default async function Home() {
+  const tranding = await getTrading();
+  const movies = await getMovies();
+	const series = await getSeries();
+
   return (
     <main>
       <section>
@@ -36,19 +46,47 @@ export default function Home() {
       </section>
 
       <section className={`margin-64`}>
-        <h3 className={`h3-32 container`}>Trading</h3>
+        <h3 className={`h3-32 container`}>Tendências</h3>
         <Slider>
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
-          <Cards title="" text="" image="" />
+          {tranding.map((item: TypeResultTrading) => {
+            return (
+              <Cards
+                title={item.title ? item.title : item.name}
+                image={item.poster_path}
+                key={item.id}
+              />
+            );
+          })}
+        </Slider>
+      </section>
+
+      <section className={`margin-64`}>
+        <h3 className={`h3-32 container`}>Filmes</h3>
+        <Slider>
+          {movies.map((item: TypeResultMovies) => {
+            return (
+              <Cards
+                title={item.title}
+                image={item.poster_path}
+                key={item.id}
+              />
+            );
+          })}
+        </Slider>
+      </section>
+
+      <section className={`margin-64`}>
+        <h3 className={`h3-32 container`}>Séries</h3>
+        <Slider>
+          {series.map((item: TypeResultsSeries) => {
+            return (
+              <Cards
+                title={item.name}
+                image={item.poster_path}
+                key={item.id}
+              />
+            );
+          })}
         </Slider>
       </section>
     </main>

@@ -10,12 +10,21 @@
 .swiper-button-prev,
 .swiper-button-next {
 	margin: 0 2rem;
-  color: var(--gray-400);
-	padding: 1.5rem;
+  color: var(--gray-300);
+	padding: 2rem;
+	top: calc(50% - 1rem);
 	border-radius: 12px;
 	background-color: #ffffff1e;
 	--swiper-navigation-size: 24px;
 	font-weight: 700;
+	transition: .2s;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+	scale: 1.1;
+  color: var(--gray-000);
+	background-color: #3b83f65f;
 }
 
 .swiper-horizontal > .swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal {
