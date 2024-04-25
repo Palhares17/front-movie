@@ -3,13 +3,13 @@ import Image from 'next/image';
 import styles from './home.module.css';
 import Cards from '@/components/functional/cards';
 import Slider from '@/components/functional/Slider';
-import getTrading from '@/api/actions/getTrading';
-import { TypeResultTrading } from '@/api/types/trading';
-import getMovies from '@/api/actions/getMovies';
 import { TypeResultMovies } from '@/api/types/movies';
-import getSeries from '@/api/actions/getSeries';
 import { TypeResultsSeries } from '@/api/types/series';
 import SectionHome from '@/components/ui/sectionHome';
+import getTrading from '@/api/routes/getTrading';
+import getMovies from '@/api/routes/getMovies';
+import getSeries from '@/api/routes/getSeries';
+import { TypeResultTrading } from '@/api/types/trading';
 
 export default async function Home() {
   const tranding = await getTrading();
@@ -20,7 +20,7 @@ export default async function Home() {
     <main>
       <section>
         <Image
-          src="/assets/superman.png"
+          src={`https://image.tmdb.org/t/p/original/${movies[4].backdrop_path}`}
           width={1956}
           height={897}
           alt="banner"
@@ -28,25 +28,14 @@ export default async function Home() {
         />
 
         <div className={`${styles.titleFilm} ${styles.position}`}>
-          <h1 className="h1-48">Nome do filme</h1>
-          <p className={`${styles.width} p-16`}>
-            A jornada de Paul Atreides continua. Ele está determinado a buscar
-            vingança contra aqueles que destruíram sua família e seu lar. Com a
-            ajuda de Chani e dos Fremen, ele embarca em uma jornada espiritual,
-            mística e marcial. Se torna Dib, o líder messiânico dos Fremen,
-            enquanto luta para evitar um futuro sombrio que ele testemunhou em
-            visões. No entanto, suas ações inadvertidamente desencadeiam uma
-            Guerra Santa em seu nome, que se espalha pelo universo conhecido.
-            Enquanto enfrenta escolhas difíceis entre o amor por Chani e o
-            destino de seu povo, Paul precisa usar suas habilidades e
-            conhecimentos para evitar o terrível futuro que previu.
-          </p>
+          <h1 className="h1-48">{movies[4].title}</h1>
+          <p className={`${styles.width} p-16`}>{movies[4].overview}</p>
 
           <ButtonDetails text="ver detalhes" />
         </div>
       </section>
 
-      <SectionHome text="Tendências">
+      <SectionHome text="Tendências">	
         <Slider>
           {tranding.map((item: TypeResultTrading) => {
             return (
@@ -74,7 +63,7 @@ export default async function Home() {
         </Slider>
       </SectionHome>
 
-      <SectionHome text="Filmes">
+      <SectionHome text="Séries">
         <Slider>
           {series.map((item: TypeResultsSeries) => {
             return (
