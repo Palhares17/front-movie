@@ -1,0 +1,87 @@
+.container {
+  position: absolute;
+  right: 0;
+  top: 80px;
+  z-index: 1000;
+  display: none;
+  background: #0000006c;
+  backdrop-filter: blur(10px);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 300px;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.li {
+  position: relative;
+  background-color: transparent;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.5rem 0.875rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.li::before {
+  content: '';
+  background-color: #ffffff1e;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 700ms ease-in-out;
+  display: inline-block;
+}
+
+.li:hover::before {
+  width: 100%;
+}
+
+.link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--gray-300);
+}
+
+.active {
+  display: block;
+  opacity: 1;
+  animation: slidein 0.2s ease-in-out forwards;
+}
+
+.desabled {
+  display: block;
+  opacity: 0;
+  animation: slideOut 0.2s ease-in-out forwards;
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  from {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
