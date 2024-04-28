@@ -12,6 +12,12 @@ export default function Header() {
 
   return (
     <>
+      {isOpen && (
+        <div
+          className={styles.closeSidebar}
+          onClick={() => setIsOpen(false)}
+        ></div>
+      )}
       <header className={`${styles.header} container`}>
         <Sidebar animate={isOpen} />
 
@@ -40,7 +46,10 @@ export default function Header() {
 
           <div className={styles.nav}>
             <div className={isOpen ? styles.active : ''}>
-              <div className={styles.buttonNav} onClick={() => setIsOpen(!isOpen)}>
+              <div
+                className={styles.buttonNav}
+                onClick={() => setIsOpen(!isOpen)}
+              >
                 <span className={styles.menu}></span>
                 <span className={styles.menu}></span>
               </div>

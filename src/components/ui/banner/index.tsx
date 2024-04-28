@@ -11,6 +11,17 @@ import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 export default function Banner(movies: any) {
   const [index, setIndex] = React.useState(0);
 
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (index === movies.props.length - 1) {
+        setIndex(0);
+      } else {
+        setIndex(index + 1);
+      }
+    }, 10000);
+    return () => clearInterval(interval);
+  });
+
   const handleNext = () => {
     if (index === movies.props.length - 1) {
       setIndex(0);
@@ -46,7 +57,7 @@ export default function Banner(movies: any) {
         <div className={styles.buttonContent}>
           <div>
             <ButtonDetails text="ver detalhes" />
-						{/* <SaveButton /> */}
+            {/* <SaveButton /> */}
           </div>
           <div className={styles.controller}>
             <button className={styles.buttonPrev} onClick={handlePrev}>
