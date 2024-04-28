@@ -9,7 +9,7 @@
 		".eslintrc*": true,
 		"tsconfig.*": true,
 		"next-env.d.ts": true,
-		"next.config.mjs": true,
+		// "next.config.mjs": true,
 		"yarn.lock": true,
 		"README.md": true,
 		".env": true

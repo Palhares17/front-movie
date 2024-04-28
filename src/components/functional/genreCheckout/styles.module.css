@@ -1,0 +1,25 @@
+.tag {
+  display: inline-block;
+  padding: 0.5rem 0.875rem;
+  border-radius: 12px;
+  background: var(--gray-600);
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.1s;
+}
+
+.text {
+  font-family: var(---font-secundary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gray-000);
+}
+
+.checkboxWrapper {
+  display: none;
+}
+
+.checked, .tag:hover {
+  background: var(--gray-800);
+  border: 3px solid var(--gray-700);
+}

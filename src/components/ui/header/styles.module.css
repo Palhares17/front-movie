@@ -1,10 +1,10 @@
 .header {
-	position: fixed;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
-	position: relative;
+  position: relative;
 }
 
 .logo {
@@ -17,7 +17,7 @@
   line-height: 28px;
   align-items: center;
   position: relative;
-  max-width: 280px;
+  width: 500px;
 }
 
 .input {

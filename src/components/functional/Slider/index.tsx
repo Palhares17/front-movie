@@ -24,7 +24,6 @@ export default function Slider({ children }: TypeSlider) {
         slidesPerView={7}
         navigation
         scrollbar={{ draggable: true }}
-        loop
       >
         {Array.isArray(children) &&
           children.map((item, index) => {
