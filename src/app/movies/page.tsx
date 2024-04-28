@@ -9,10 +9,12 @@ import getMovies from '@/api/routes/getMovies';
 import { TypeResultMovies } from '@/api/types/movies';
 
 export default async function MoviesPage() {
-  const genres = await getGenres();
-  const theatres = await getTheatres();
-  const movies = await getMovies();
-
+  const [genres, theatres, movies] = await Promise.all([
+    getGenres(),
+    getTheatres(),
+    getMovies(),
+  ]);
+	
   return (
     <main>
       <ul className={`${styles.containerGenres} container margin-32`}>

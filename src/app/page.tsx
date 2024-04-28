@@ -10,14 +10,16 @@ import getMoviesWeek from '@/api/routes/getMoviesWeek';
 import getSeriesWeek from '@/api/routes/getSeriesWeek';
 
 export default async function Home() {
-  const tranding = await getTrading();
-  const moviesWeek = await getMoviesWeek();
-  const seriesWeek = await getSeriesWeek();
+  const [tranding, moviesWeek, seriesWeek] = await Promise.all([
+    getTrading(),
+    getMoviesWeek(),
+    getSeriesWeek(),
+  ]);
 
   return (
     <main>
       <Banner props={moviesWeek} />
-			
+
       <SectionHome text="Tendências">
         <Slider>
           {tranding.map((item: TypeResultTrading) => {
