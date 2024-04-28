@@ -5,10 +5,13 @@ import SectionHome from '@/components/ui/sectionHome';
 import Slider from '@/components/functional/Slider';
 import getTheatres from '@/api/routes/getTheatres';
 import Cards from '@/components/functional/cards';
+import getMovies from '@/api/routes/getMovies';
+import { TypeResultMovies } from '@/api/types/movies';
 
 export default async function MoviesPage() {
   const genres = await getGenres();
-	const theatres = await getTheatres();
+  const theatres = await getTheatres();
+  const movies = await getMovies();
 
   return (
     <main>
@@ -34,7 +37,14 @@ export default async function MoviesPage() {
         </Slider>
       </SectionHome>
 
-			
+      <section className={`container`}>
+        <h3 className={`h3-32 margin-64`}>Todos os filmes</h3>
+        <div className={styles.grid}>
+          {movies.map((item: TypeResultMovies) => (
+            <Cards title={item.title} image={item.poster_path} key={item.id} />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,25 +1,22 @@
-import ButtonDetails from '@/components/functional/button';
-import Image from 'next/image';
-import styles from './home.module.css';
 import Cards from '@/components/functional/cards';
 import Slider from '@/components/functional/Slider';
 import { TypeResultMovies } from '@/api/types/movies';
 import { TypeResultsSeries } from '@/api/types/series';
 import SectionHome from '@/components/ui/sectionHome';
 import getTrading from '@/api/routes/getTrading';
-import getMovies from '@/api/routes/getMovies';
-import getSeries from '@/api/routes/getSeries';
 import { TypeResultTrading } from '@/api/types/trading';
 import Banner from '@/components/ui/banner';
+import getMoviesWeek from '@/api/routes/getMoviesWeek';
+import getSeriesWeek from '@/api/routes/getSeriesWeek';
 
 export default async function Home() {
   const tranding = await getTrading();
-  const movies = await getMovies();
-  const series = await getSeries();
+  const moviesWeek = await getMoviesWeek();
+  const seriesWeek = await getSeriesWeek();
 
   return (
     <main>
-      <Banner props={movies} />
+      <Banner props={moviesWeek} />
 			
       <SectionHome text="Tendências">
         <Slider>
@@ -35,9 +32,9 @@ export default async function Home() {
         </Slider>
       </SectionHome>
 
-      <SectionHome text="Filmes">
+      <SectionHome text="Filmes da semana">
         <Slider>
-          {movies.map((item: TypeResultMovies) => {
+          {moviesWeek.map((item: TypeResultMovies) => {
             return (
               <Cards
                 title={item.title}
@@ -49,9 +46,9 @@ export default async function Home() {
         </Slider>
       </SectionHome>
 
-      <SectionHome text="Séries">
+      <SectionHome text="Séries da Séries">
         <Slider>
-          {series.map((item: TypeResultsSeries) => {
+          {seriesWeek.map((item: TypeResultsSeries) => {
             return (
               <Cards title={item.name} image={item.poster_path} key={item.id} />
             );

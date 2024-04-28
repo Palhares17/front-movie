@@ -3,7 +3,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-	z-index: 0;
+  z-index: 0;
 }
 
 .nameFilm {
@@ -15,10 +15,10 @@
 }
 
 .image {
-  height: 300px;
-  width: 400px;
+  max-height: 300px;
+  min-width: 200px;
   border-radius: 12px;
-	object-fit: cover;
+  object-fit: cover;
 }
 
 .category {
