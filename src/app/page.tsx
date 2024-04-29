@@ -28,6 +28,8 @@ export default async function Home() {
                 title={item.title ? item.title : item.name}
                 image={item.poster_path}
                 key={item.id}
+                id={item.id}
+                media_type={item.media_type}
               />
             );
           })}
@@ -42,6 +44,8 @@ export default async function Home() {
                 title={item.title}
                 image={item.poster_path}
                 key={item.id}
+                id={item.id}
+                media_type={item.media_type}
               />
             );
           })}
@@ -52,7 +56,13 @@ export default async function Home() {
         <Slider>
           {seriesWeek.map((item: TypeResultsSeries) => {
             return (
-              <Cards title={item.name} image={item.poster_path} key={item.id} />
+              <Cards
+                title={item.name}
+                image={item.poster_path}
+                key={item.id}
+                id={item.id}
+                media_type={item.media_type}
+              />
             );
           })}
         </Slider>

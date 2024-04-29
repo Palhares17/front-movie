@@ -6,7 +6,7 @@ import { TypeResultMovies } from '@/api/types/movies';
 import ButtonDetails from '@/components/functional/button';
 import React from 'react';
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
-// import SaveButton from '@/components/functional/save';
+import Link from 'next/link';
 
 export default function Banner(movies: any) {
   const [index, setIndex] = React.useState(0);
@@ -56,8 +56,7 @@ export default function Banner(movies: any) {
 
         <div className={styles.buttonContent}>
           <div>
-            <ButtonDetails text="ver detalhes" />
-            {/* <SaveButton /> */}
+            <ButtonDetails text="ver detalhes" id={movies.props[index].id} media_type={movies.props[index].media_type} />
           </div>
           <div className={styles.controller}>
             <button className={styles.buttonPrev} onClick={handlePrev}>

@@ -14,7 +14,7 @@ export default async function MoviesPage() {
     getTheatres(),
     getMovies(),
   ]);
-	
+
   return (
     <main>
       <ul className={`${styles.containerGenres} container margin-32`}>
@@ -33,6 +33,7 @@ export default async function MoviesPage() {
                 title={item.title}
                 image={item.poster_path}
                 key={item.id}
+                id={item.id}
               />
             );
           })}
@@ -43,7 +44,12 @@ export default async function MoviesPage() {
         <h3 className={`h3-32 margin-64`}>Todos os filmes</h3>
         <div className={styles.grid}>
           {movies.map((item: TypeResultMovies) => (
-            <Cards title={item.title} image={item.poster_path} key={item.id} />
+            <Cards
+              title={item.title}
+              image={item.poster_path}
+              key={item.id}
+              id={item.id}
+            />
           ))}
         </div>
       </section>
