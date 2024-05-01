@@ -98,12 +98,20 @@ button {
   border: none;
 }
 
+.margin-120 {
+  margin-top: 7.5rem;
+}
+
 .margin-64 {
   margin-top: 4rem;
 }
 
 .margin-32 {
   margin-top: 2rem;
+}
+
+.margin-16 {
+  margin-top: 1rem;
 }
 
 .margin-8 {

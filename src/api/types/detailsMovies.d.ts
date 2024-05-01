@@ -28,7 +28,7 @@ export interface TypeSpokenLanguage {
 export export interface TypeDetailsMovie {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: null | Collection;
+  belongs_to_collection: null | TypeCollection;
   budget: number;
   genres: TypeGenre[];
   homepage: string;

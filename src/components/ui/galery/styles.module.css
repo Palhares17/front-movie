@@ -1,0 +1,6 @@
+.flex {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1.5rem;
+	margin-top: 32px	;
+}

@@ -1,0 +1,22 @@
+/* Bookmark.module.css */
+.bookmark {
+  cursor: pointer;
+  background-color: var(--gray-700);
+	color: var(--gray-000);
+  padding: 0.75rem;
+	width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+@keyframes bookmark {
+  0% {
+    stroke-dasharray: 0 200;
+    stroke-dashoffset: 80;
+  }
+  100% {
+    stroke-dasharray: 200 0;
+  }
+}
