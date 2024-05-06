@@ -1,5 +1,5 @@
-import { options } from '../constants/options';
-import { TypeBackdropData } from '../types/galery';
+import { options } from '../../constants/options';
+import { TypeBackdropData } from '../../types/galery';
 
 export default async function getGalery(movie_id: number) {
   const response = await fetch(

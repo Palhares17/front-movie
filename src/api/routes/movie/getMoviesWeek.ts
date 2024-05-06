@@ -1,7 +1,7 @@
 'use server';
 
-import { options } from '../constants/options';
-import { TypeResultMovies } from '../types/movies';
+import { options } from '../../constants/options';
+import { TypeResultMovies } from '../../types/movies';
 
 export default async function getMoviesWeek() {
   const response = await fetch(

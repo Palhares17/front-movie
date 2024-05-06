@@ -1,7 +1,142 @@
-export default function MovieIdPage({ params }: { params: { id: number } }) {
+import getDetailsMovie from '@/api/routes/movie/getDetailsMovie';
+import Image from 'next/image';
+import styles from './styles.module.css';
+import SaveButton from '@/components/functional/save';
+import getProviders from '@/api/routes/movie/getWatchProviders';
+import getCredits, {
+  CastMember,
+  TypeCaster,
+} from '@/api/routes/movie/getCredits';
+import Slider from '@/components/functional/Slider';
+import Cards from '@/components/functional/cards';
+import CardsCasting from '@/components/functional/cardsCasting';
+import getTrailerMovie from '@/api/routes/movie/getTrailerMovie';
+import Trailer from '@/components/ui/trailer';
+import Galery from '@/components/ui/galery';
+import getGalery from '@/api/routes/movie/getGalery';
+import Section from '@/components/ui/section';
+import { Suspense } from 'react';
+import getDetailsSeries from '@/api/routes/series/getDetailsSeries';
+
+interface TypeParams {
+  params: {
+    id: number;
+  };
+}
+
+export default async function SeriesIdPage({ params }: TypeParams) {
+  const [details, providers, credit, trailer, galery] = await Promise.all([
+    getDetailsSeries(params.id),
+    getProviders(params.id),
+    getCredits(params.id),
+    getTrailerMovie(params.id),
+    getGalery(params.id),
+  ]);
+
   return (
-    <div>
-			<h1>Série: {params.id}</h1>
-		</div>
+    <main className={`margin-64`}>
+      <section className={`${styles.containerMovie}`}>
+        <Image
+          src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+          alt={`poster ${details.name}`}
+          width={300}
+          height={480}
+          className={styles.image}
+        />
+        <div>
+          <h1 className={`h3-32`}>{details.name}</h1>
+          <div className={`${styles.containerInfo} margin-8`}>
+            <p className={styles.info}>Temporadas: {details.number_of_seasons}</p>
+            <span className={styles.divider}></span>
+            <p className={styles.info}>
+              Episódios: {details.number_of_episodes}
+            </p>
+          </div>
+
+          <div className={`margin-32 ${styles.containerGenre}`}>
+            {details.genres.map((item) => (
+              <span key={item.id} className={styles.genre}>
+                {item.name}
+              </span>
+            ))}
+          </div>
+
+          <p className={`margin-32 p-16 ${styles.overview}`}>
+            {details.overview}
+          </p>
+          <SaveButton />
+        </div>
+      </section>
+
+      <Section text="Aonde assistir">
+        <div className={`${styles.providers} margin-32 container`}>
+          {providers ? (
+            providers?.map((provider) => (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                alt={`logo ${provider.provider_name}`}
+                width={64}
+                height={64}
+                key={provider.provider_id}
+                className={styles.provider}
+              />
+            ))
+          ) : (
+            <p className={`p-16`}>Não possuí distribuição no Brasil</p>
+          )}
+        </div>
+      </Section>
+
+      {/* <section className={`margin-120 container`}>
+        <h3 className={`h3-32`}>Aonde assistir</h3>
+      </section> */}
+
+      <Section text="Elenco">
+        <Slider>
+          {credit.map((item: CastMember) => {
+            return (
+              <CardsCasting
+                title={item.name}
+                image={item.profile_path}
+                key={item.id}
+                id={item.id}
+                character={item.character}
+              />
+            );
+          })}
+        </Slider>
+      </Section>
+      {/* 
+      <section className={`margin-64`}>
+        <h3 className={`h3-32 container`}>Elenco</h3>
+      </section> */}
+
+      {trailer[0] && (
+        <Section text="Treiler">
+          <Trailer videoKey={trailer[0].key} />
+        </Section>
+      )}
+
+      <Section text="Galeria">
+        <Suspense>
+          <Galery>
+            {galery.backdrops.map((item) => (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+                alt={`backdrop ${item.file_path}`}
+                width={200}
+                height={200}
+                key={item.file_path}
+                className={styles.image}
+              />
+            ))}
+          </Galery>
+        </Suspense>
+      </Section>
+
+      {/* <section className={`margin-64 container`}>
+        <h3 className={`h3-32`}>Galeria</h3>
+      </section> */}
+    </main>
   );
 }

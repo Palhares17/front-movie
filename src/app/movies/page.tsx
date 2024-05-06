@@ -1,11 +1,11 @@
 import GenreCheckout from '@/components/functional/genreCheckout';
 import styles from './styles.module.css';
 import getGenres from '@/api/routes/getGenres';
-import SectionHome from '@/components/ui/sectionHome';
+import Section from '@/components/ui/section';
 import Slider from '@/components/functional/Slider';
-import getTheatres from '@/api/routes/getTheatres';
+import getTheatres from '@/api/routes/movie/getTheatres';
 import Cards from '@/components/functional/cards';
-import getMovies from '@/api/routes/getMovies';
+import getMovies from '@/api/routes/movie/getMovies';
 import { TypeResultMovies } from '@/api/types/movies';
 
 export default async function MoviesPage() {
@@ -25,7 +25,7 @@ export default async function MoviesPage() {
         ))}
       </ul>
 
-      <SectionHome text="Nos cinemas">
+      <Section text="Nos cinemas">
         <Slider>
           {theatres.map((item: TypeTheatresResults) => {
             return (
@@ -38,7 +38,7 @@ export default async function MoviesPage() {
             );
           })}
         </Slider>
-      </SectionHome>
+      </Section>
 
       <section className={`container`}>
         <h3 className={`h3-32 margin-64`}>Todos os filmes</h3>

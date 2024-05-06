@@ -1,7 +1,7 @@
 'use server';
 
-import { options } from '../constants/options';
-import { TypeDetailsMovie } from '../types/detailsMovies';
+import { options } from '../../constants/options';
+import { TypeDetailsMovie } from '../../types/detailsMovies';
 
 export default async function getDetailsMovie(movie_id: number) {
   const response = await fetch(

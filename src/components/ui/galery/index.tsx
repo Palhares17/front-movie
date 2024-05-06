@@ -6,5 +6,5 @@ interface TypeGalery {
 }
 
 export default function Galery({ children }: TypeGalery) {
-  return <div className={styles.flex}>{children}</div>;
+  return <div className={`${styles.flex} container`}>{children}</div>;
 }

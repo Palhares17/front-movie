@@ -1,16 +1,21 @@
-import getDetailsMovie from '@/api/routes/getDetailsMovie';
+import getDetailsMovie from '@/api/routes/movie/getDetailsMovie';
 import Image from 'next/image';
 import styles from './styles.module.css';
 import SaveButton from '@/components/functional/save';
-import getProviders from '@/api/routes/getWatchProviders';
-import getCredits, { CastMember, TypeCaster } from '@/api/routes/getCredits';
+import getProviders from '@/api/routes/movie/getWatchProviders';
+import getCredits, {
+  CastMember,
+  TypeCaster,
+} from '@/api/routes/movie/getCredits';
 import Slider from '@/components/functional/Slider';
 import Cards from '@/components/functional/cards';
 import CardsCasting from '@/components/functional/cardsCasting';
-import getTrailerMovie from '@/api/routes/getTrailerMovie';
+import getTrailerMovie from '@/api/routes/movie/getTrailerMovie';
 import Trailer from '@/components/ui/trailer';
 import Galery from '@/components/ui/galery';
-import getGalery from '@/api/routes/getGalery';
+import getGalery from '@/api/routes/movie/getGalery';
+import Section from '@/components/ui/section';
+import { Suspense } from 'react';
 
 interface TypeParams {
   params: {
@@ -19,12 +24,13 @@ interface TypeParams {
 }
 
 export default async function MovieIdPage({ params }: TypeParams) {
-  const details = await getDetailsMovie(params.id);
-  const providers = await getProviders(params.id);
-  const credit = await getCredits(params.id);
-  const trailer = await getTrailerMovie(params.id);
-  const galery = await getGalery(params.id);
-  console.log();
+  const [details, providers, credit, trailer, galery] = await Promise.all([
+    getDetailsMovie(params.id),
+    getProviders(params.id),
+    getCredits(params.id),
+    getTrailerMovie(params.id),
+    getGalery(params.id),
+  ]);
 
   const date = details.release_date;
   const year = date.substring(0, 4);
@@ -69,9 +75,8 @@ export default async function MovieIdPage({ params }: TypeParams) {
         </div>
       </section>
 
-      <section className={`margin-120 container`}>
-        <h3 className={`h3-32`}>Aonde assistir</h3>
-        <div className={`${styles.providers} margin-32`}>
+      <Section text="Aonde assistir">
+        <div className={`${styles.providers} margin-32 container`}>
           {providers ? (
             providers?.map((provider) => (
               <Image
@@ -87,11 +92,13 @@ export default async function MovieIdPage({ params }: TypeParams) {
             <p className={`p-16`}>Não possuí distribuição no Brasil</p>
           )}
         </div>
-      </section>
+      </Section>
 
-      <section className={`margin-64`}>
-        <h3 className={`h3-32 container`}>Elenco</h3>
+      {/* <section className={`margin-120 container`}>
+        <h3 className={`h3-32`}>Aonde assistir</h3>
+      </section> */}
 
+      <Section text="Elenco">
         <Slider>
           {credit.map((item: CastMember) => {
             return (
@@ -105,31 +112,38 @@ export default async function MovieIdPage({ params }: TypeParams) {
             );
           })}
         </Slider>
-      </section>
+      </Section>
+      {/* 
+      <section className={`margin-64`}>
+        <h3 className={`h3-32 container`}>Elenco</h3>
+      </section> */}
 
       {trailer[0] && (
-        <section className={`margin-64`}>
-          <h3 className={`h3-32 container`}>Treiler</h3>
-
+        <Section text="Treiler">
           <Trailer videoKey={trailer[0].key} />
-        </section>
+        </Section>
       )}
 
-      <section className={`margin-64 container`}>
+      <Section text="Galeria">
+        <Suspense>
+          <Galery>
+            {galery.backdrops.map((item) => (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+                alt={`backdrop ${item.file_path}`}
+                width={200}
+                height={200}
+                key={item.file_path}
+                className={styles.image}
+              />
+            ))}
+          </Galery>
+        </Suspense>
+      </Section>
+
+      {/* <section className={`margin-64 container`}>
         <h3 className={`h3-32`}>Galeria</h3>
-        <Galery>
-          {galery.backdrops.map((item) => (
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
-              alt={`backdrop ${item.file_path}`}
-              width={200}
-              height={200}
-              key={item.file_path}
-              className={styles.image}
-            />
-          ))}
-        </Galery>
-      </section>
+      </section> */}
     </main>
   );
 }

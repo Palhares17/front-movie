@@ -2,12 +2,12 @@ import Cards from '@/components/functional/cards';
 import Slider from '@/components/functional/Slider';
 import { TypeResultMovies } from '@/api/types/movies';
 import { TypeResultsSeries } from '@/api/types/series';
-import SectionHome from '@/components/ui/sectionHome';
+import Section from '@/components/ui/section';
 import getTrading from '@/api/routes/getTrading';
 import { TypeResultTrading } from '@/api/types/trading';
 import Banner from '@/components/ui/banner';
-import getMoviesWeek from '@/api/routes/getMoviesWeek';
-import getSeriesWeek from '@/api/routes/getSeriesWeek';
+import getMoviesWeek from '@/api/routes/movie/getMoviesWeek';
+import getSeriesWeek from '@/api/routes/series/getSeriesWeek';
 
 export default async function Home() {
   const [tranding, moviesWeek, seriesWeek] = await Promise.all([
@@ -20,7 +20,7 @@ export default async function Home() {
     <main>
       <Banner props={moviesWeek} />
 
-      <SectionHome text="Tendências">
+      <Section text="Tendências">
         <Slider>
           {tranding.map((item: TypeResultTrading) => {
             return (
@@ -34,9 +34,9 @@ export default async function Home() {
             );
           })}
         </Slider>
-      </SectionHome>
+      </Section>
 
-      <SectionHome text="Filmes da semana">
+      <Section text="Filmes da semana">
         <Slider>
           {moviesWeek.map((item: TypeResultMovies) => {
             return (
@@ -50,9 +50,9 @@ export default async function Home() {
             );
           })}
         </Slider>
-      </SectionHome>
+      </Section>
 
-      <SectionHome text="Séries da Séries">
+      <Section text="Séries da Séries">
         <Slider>
           {seriesWeek.map((item: TypeResultsSeries) => {
             return (
@@ -66,7 +66,7 @@ export default async function Home() {
             );
           })}
         </Slider>
-      </SectionHome>
+      </Section>
     </main>
   );
 }

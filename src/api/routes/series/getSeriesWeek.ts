@@ -1,7 +1,7 @@
 'use server';
 
-import { options } from '../constants/options';
-import { TypeResultsSeries } from '../types/series';
+import { options } from '../../constants/options';
+import { TypeResultsSeries } from '../../types/series';
 
 export default async function getSeriesWeek() {
   const response = await fetch(

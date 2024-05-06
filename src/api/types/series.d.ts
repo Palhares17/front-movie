@@ -4,7 +4,7 @@ export interface TypeResultsSeries {
   original_name: string;
   overview: string;
   poster_path: string;
-  media_type: 'tv';
+  media_type: string;
   adult: boolean;
   name: string;
   original_language: string;

@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import { options } from '../constants/options';
+import { options } from '../../constants/options';
 
 export default async function getTheatres() {
   const response = await fetch(
@@ -7,7 +7,7 @@ export default async function getTheatres() {
     options
   );
 
-	const data = await response.json() as TypeTheatres;
+  const data = (await response.json()) as TypeTheatres;
 
-	return data.results;
+  return data.results;
 }

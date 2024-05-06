@@ -1,7 +1,7 @@
 'use server';
 
-import { options } from '../constants/options';
-import { TypeDetailsMovie } from '../types/detailsMovies';
+import { options } from '../../constants/options';
+import { TypeDetailsMovie } from '../../types/detailsMovies';
 
 interface TypeProvider {
   logo_path: string;
