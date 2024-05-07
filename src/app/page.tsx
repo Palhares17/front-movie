@@ -52,7 +52,7 @@ export default async function Home() {
         </Slider>
       </Section>
 
-      <Section text="Séries da Séries">
+      <Section text="Séries da semana">
         <Slider>
           {seriesWeek.map((item: TypeResultsSeries) => {
             return (

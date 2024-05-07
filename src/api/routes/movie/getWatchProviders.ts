@@ -31,5 +31,5 @@ export default async function getProviders(movie_id: number) {
   );
 
   const data = (await response.json()) as TypeProvidersArray;
-  return data.results['BR']?.flatrate;
+  return data.results["BR"]?.flatrate;
 }

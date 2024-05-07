@@ -77,7 +77,7 @@ export default async function MovieIdPage({ params }: TypeParams) {
 
       <Section text="Aonde assistir">
         <div className={`${styles.providers} margin-32 container`}>
-          {providers ? (
+          {providers? (
             providers?.map((provider) => (
               <Image
                 src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
@@ -109,10 +109,6 @@ export default async function MovieIdPage({ params }: TypeParams) {
           })}
         </Slider>
       </Section>
-      {/* 
-      <section className={`margin-64`}>
-        <h3 className={`h3-32 container`}>Elenco</h3>
-      </section> */}
 
       {trailer[0] && (
         <Section text="Treiler">
@@ -136,10 +132,6 @@ export default async function MovieIdPage({ params }: TypeParams) {
           </Galery>
         </Suspense>
       </Section>
-
-      {/* <section className={`margin-64 container`}>
-        <h3 className={`h3-32`}>Galeria</h3>
-      </section> */}
     </main>
   );
 }
