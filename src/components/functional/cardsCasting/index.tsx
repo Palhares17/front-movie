@@ -7,7 +7,7 @@ interface TypeCard {
   image?: string;
   media_type?: string;
   id: number;
-  character: string;
+  character?: string;
 }
 
 export default function CardsCasting({

@@ -63,3 +63,9 @@
   display: flex;
   gap: 0.875rem;
 }
+
+.creators {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 24px;
+}

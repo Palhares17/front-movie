@@ -4,7 +4,7 @@ interface Criador {
   name: string;
   original_name: string;
   gender: number;
-  profile_path: string | null;
+  profile_path?: string;
 }
 
 interface Genero {

@@ -3,10 +3,10 @@ import Image from 'next/image';
 import styles from './styles.module.css';
 import SaveButton from '@/components/functional/save';
 import getProviders from '@/api/routes/movie/getWatchProviders';
-import getCredits, {
+import getCreditsMovies, {
   CastMember,
   TypeCaster,
-} from '@/api/routes/movie/getCredits';
+} from '@/api/routes/movie/getCreditsMovie';
 import Slider from '@/components/functional/Slider';
 import Cards from '@/components/functional/cards';
 import CardsCasting from '@/components/functional/cardsCasting';
@@ -27,7 +27,7 @@ export default async function MovieIdPage({ params }: TypeParams) {
   const [details, providers, credit, trailer, galery] = await Promise.all([
     getDetailsMovie(params.id),
     getProviders(params.id),
-    getCredits(params.id),
+    getCreditsMovies(params.id),
     getTrailerMovie(params.id),
     getGalery(params.id),
   ]);
@@ -93,10 +93,6 @@ export default async function MovieIdPage({ params }: TypeParams) {
           )}
         </div>
       </Section>
-
-      {/* <section className={`margin-120 container`}>
-        <h3 className={`h3-32`}>Aonde assistir</h3>
-      </section> */}
 
       <Section text="Elenco">
         <Slider>

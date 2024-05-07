@@ -22,7 +22,7 @@ export interface TypeCaster {
   cast: CastMember[];
 }
 
-export default async function getCredits(movie_id: number) {
+export default async function getCreditsMovies(movie_id: number) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=pt-BR`,
     options
