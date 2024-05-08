@@ -5,7 +5,7 @@ import { options } from '../../constants/options';
 
 export default async function getSeries() {
   const response = await fetch(
-    'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=pt-BR&page=1&sort_by=popularity.desc',
+    'https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=1',
     options
   );
 

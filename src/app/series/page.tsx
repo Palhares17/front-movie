@@ -34,6 +34,7 @@ export default async function MoviesPage() {
               image={item.poster_path}
               key={item.id}
               id={item.id}
+							media_type='tv'
             />
           ))}
         </div>
