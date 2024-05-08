@@ -10,10 +10,11 @@
 
 .nav {
   display: flex;
+	justify-content: space-between;
   flex-direction: column;
   gap: 0.5rem;
   width: 300px;
-  height: 100vh;
+  height: calc(100vh - 80px);
   padding: 2rem;
 }
 
@@ -62,6 +63,18 @@
   display: block;
   opacity: 0;
   animation: slideOut 0.2s ease-in-out forwards;
+}
+
+.login {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
+	color: #fff;
+  width: 100%;
+	padding: 0.5rem;
+  border-radius: 8px;
+  background: var(--blue-100);
 }
 
 @keyframes slidein {
