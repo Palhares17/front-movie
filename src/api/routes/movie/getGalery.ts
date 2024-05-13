@@ -6,7 +6,7 @@ export default async function getGalery(movie_id: number) {
     `https://api.themoviedb.org/3/movie/${movie_id}/images`,
     options
   );
-  const data = await response.json() as TypeBackdropData;
+  const data = (await response.json()) as TypeBackdropData;
 
   return data;
 }

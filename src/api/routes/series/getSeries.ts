@@ -1,12 +1,12 @@
 'use server';
 
 import { TypeResultsSeries } from '@/api/types/series';
-import { options } from '../../constants/options';
+import { optionsReload } from '../../constants/optionsReload';
 
 export default async function getSeries() {
   const response = await fetch(
     'https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=1',
-    options
+    optionsReload
   );
 
   const data = await response.json();

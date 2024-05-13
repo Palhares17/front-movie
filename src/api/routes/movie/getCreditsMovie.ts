@@ -1,6 +1,6 @@
 'use server';
 
-import { options } from '../../constants/options';
+import { optionsReload } from '../../constants/optionsReload';
 
 export interface CastMember {
   adult: boolean;
@@ -25,7 +25,7 @@ export interface TypeCaster {
 export default async function getCreditsMovies(movie_id: number) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=pt-BR`,
-    options
+    optionsReload
   );
 
   const data = (await response.json()) as TypeCaster;
