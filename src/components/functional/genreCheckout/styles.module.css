@@ -20,6 +20,6 @@
 }
 
 .checked, .tag:hover {
-  background: var(--gray-800);
-  border: 3px solid var(--gray-700);
+  background: var(--gray-000);
+	color: var(--gray-600);
 }
