@@ -7,6 +7,7 @@ import getTheatres from '@/api/routes/movie/getTheatres';
 import Cards from '@/components/functional/cards';
 import getMovies from '@/api/routes/movie/getMovies';
 import { TypeResultMovies } from '@/api/types/movies';
+import { Suspense } from 'react';
 
 export default async function MoviesPage() {
   const [genres, theatres, movies] = await Promise.all([
@@ -42,16 +43,18 @@ export default async function MoviesPage() {
 
       <section className={`container`}>
         <h3 className={`h3-32 margin-64`}>Todos os filmes</h3>
-        <div className={styles.grid}>
-          {movies.map((item: TypeResultMovies) => (
-            <Cards
-              title={item.title}
-              image={item.poster_path}
-              key={item.id}
-              id={item.id}
-            />
-          ))}
-        </div>
+        <Suspense fallback={<div>Carregando...</div>}>
+          <div className={styles.grid}>
+            {movies.map((item: TypeResultMovies) => (
+              <Cards
+                title={item.title}
+                image={item.poster_path}
+                key={item.id}
+                id={item.id}
+              />
+            ))}
+          </div>
+        </Suspense>
       </section>
     </main>
   );

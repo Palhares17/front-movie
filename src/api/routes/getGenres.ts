@@ -1,6 +1,6 @@
 'use server';
 
-import { options } from '../constants/optionsReload';
+import { options } from '../constants/options';
 import { TypeColectionGenre } from '../types/genre';
 
 export default async function getGenres() {
