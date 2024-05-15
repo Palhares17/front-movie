@@ -1,6 +1,6 @@
 'use server';
 
-import { options } from '../../constants/optionsReload';
+import { options } from '../../constants/options';
 
 export interface CastMemberSeries {
   adult: boolean;

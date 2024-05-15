@@ -1,4 +1,6 @@
-import { options } from '@/api/constants/optionsReload';
+'use server';
+
+import { options } from '@/api/constants/options';
 
 export default async function getDetailsSeries(id: number) {
   const response = await fetch(
