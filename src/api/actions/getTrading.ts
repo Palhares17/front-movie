@@ -1,6 +1,6 @@
 'use server';
 
-import { optionsReload } from '../constants/optionsReload';
+import { optionsReload } from '../@constants/optionsReload';
 import { TypeResultTrading } from '../types/trading';
 
 export default async function getTrading() {

@@ -1,6 +1,6 @@
 'use server';
 
-import { options } from '../../constants/options';
+import { options } from '../../@constants/options';
 import { TypeDetailsMovie } from '../../types/detailsMovies';
 
 interface TypeProvider {

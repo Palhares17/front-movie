@@ -1,6 +1,6 @@
 'use server';
 
-import { options } from '../../constants/options';
+import { options } from '../../@constants/options';
 import { TypeDetailsMovie } from '../../types/detailsMovies';
 
 export default async function getDetailsMovie(movie_id: number) {

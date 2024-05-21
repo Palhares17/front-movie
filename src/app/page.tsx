@@ -3,11 +3,11 @@ import Slider from '@/components/functional/Slider';
 import { TypeResultMovies } from '@/api/types/movies';
 import { TypeResultsSeries } from '@/api/types/series';
 import Section from '@/components/ui/section';
-import getTrading from '@/api/routes/getTrading';
+import getTrading from '@/api/actions/getTrading';
 import { TypeResultTrading } from '@/api/types/trading';
 import Banner from '@/components/ui/banner';
-import getMoviesWeek from '@/api/routes/movie/getMoviesWeek';
-import getSeriesWeek from '@/api/routes/series/getSeriesWeek';
+import getMoviesWeek from '@/api/actions/movie/getMoviesWeek';
+import getSeriesWeek from '@/api/actions/series/getSeriesWeek';
 
 export default async function Home() {
   const [tranding, moviesWeek, seriesWeek] = await Promise.all([

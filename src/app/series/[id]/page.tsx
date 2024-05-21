@@ -4,16 +4,16 @@ import SaveButton from '@/components/functional/save';
 import Slider from '@/components/functional/Slider';
 import CardsCasting from '@/components/functional/cardsCasting';
 import Section from '@/components/ui/section';
-import getDetailsSeries from '@/api/routes/series/getDetailsSeries';
-import getWatchProviderSeries from '@/api/routes/series/getWatchProviders';
+import getDetailsSeries from '@/api/actions/series/getDetailsSeries';
+import getWatchProviderSeries from '@/api/actions/series/getWatchProviders';
 import getCastingSeries, {
   CastMemberSeries,
-} from '@/api/routes/series/getCastingSeries';
+} from '@/api/actions/series/getCastingSeries';
 import Trailer from '@/components/ui/trailer';
-import getTrailerSeries from '@/api/routes/series/getTrailerSeries';
+import getTrailerSeries from '@/api/actions/series/getTrailerSeries';
 import { Suspense } from 'react';
 import Galery from '@/components/ui/galery';
-import getGalerySeries from '@/api/routes/series/getGalerySeries';
+import getGalerySeries from '@/api/actions/series/getGalerySeries';
 
 interface TypeParams {
   params: {

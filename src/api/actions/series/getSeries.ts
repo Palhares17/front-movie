@@ -1,7 +1,7 @@
 'use server';
 
 import { TypeResultsSeries } from '@/api/types/series';
-import { optionsReload } from '../../constants/optionsReload';
+import { optionsReload } from '../../@constants/optionsReload';
 
 export default async function getSeries() {
   const response = await fetch(

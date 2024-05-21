@@ -1,19 +1,19 @@
-import getDetailsMovie from '@/api/routes/movie/getDetailsMovie';
+import getDetailsMovie from '@/api/actions/movie/getDetailsMovie';
 import Image from 'next/image';
 import styles from './styles.module.css';
 import SaveButton from '@/components/functional/save';
-import getProviders from '@/api/routes/movie/getWatchProviders';
+import getProviders from '@/api/actions/movie/getWatchProviders';
 import getCreditsMovies, {
   CastMember,
   TypeCaster,
-} from '@/api/routes/movie/getCreditsMovie';
+} from '@/api/actions/movie/getCreditsMovie';
 import Slider from '@/components/functional/Slider';
 import Cards from '@/components/functional/cards';
 import CardsCasting from '@/components/functional/cardsCasting';
-import getTrailerMovie from '@/api/routes/movie/getTrailerMovie';
+import getTrailerMovie from '@/api/actions/movie/getTrailerMovie';
 import Trailer from '@/components/ui/trailer';
 import Galery from '@/components/ui/galery';
-import getGalery from '@/api/routes/movie/getGalery';
+import getGalery from '@/api/actions/movie/getGalery';
 import Section from '@/components/ui/section';
 import { Suspense } from 'react';
 
@@ -77,7 +77,7 @@ export default async function MovieIdPage({ params }: TypeParams) {
 
       <Section text="Aonde assistir">
         <div className={`${styles.providers} margin-32 container`}>
-          {providers? (
+          {providers ? (
             providers?.map((provider) => (
               <Image
                 src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}

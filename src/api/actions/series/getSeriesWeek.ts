@@ -1,6 +1,6 @@
 'use server';
 
-import { optionsReload } from '../../constants/optionsReload';
+import { optionsReload } from '../../@constants/optionsReload';
 import { TypeResultsSeries } from '../../types/series';
 
 export default async function getSeriesWeek() {

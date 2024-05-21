@@ -1,6 +1,6 @@
 'use server';
 
-import { optionsReload } from '../../constants/optionsReload';
+import { optionsReload } from '../../@constants/optionsReload';
 import { TypeResultMovies } from '../../types/movies';
 
 export default async function getMovies() {

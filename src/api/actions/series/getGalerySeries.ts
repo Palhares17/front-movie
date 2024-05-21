@@ -1,4 +1,4 @@
-import { options } from '../../constants/options';
+import { options } from '../../@constants/options';
 import { TypeBackdropData } from '../../types/galery';
 
 export default async function getGalerySeries(movie_id: number) {

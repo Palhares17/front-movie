@@ -1,6 +1,6 @@
 'use strict';
 
-import { options } from '../../constants/options';
+import { options } from '../../@constants/options';
 import { TypeVideoResult, TypeVideos } from '../../types/trailer';
 
 export default async function getTrailerMovie(movie_id: number) {

@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import { optionsReload } from '../../constants/optionsReload';
+import { optionsReload } from '../../@constants/optionsReload';
 
 export default async function getTheatres() {
   const response = await fetch(

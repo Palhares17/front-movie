@@ -1,7 +1,6 @@
 'use server';
 
-import { optionsReload } from '../../constants/optionsReload';
-import { TypeDetailsMovie } from '../../types/detailsMovies';
+import { options } from '../../@constants/options';
 
 interface TypeProvider {
   logo_path: string;
@@ -27,7 +26,7 @@ interface TypeProvidersArray {
 export default async function getProviders(movie_id: number) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers`,
-    optionsReload
+    options
   );
 
   const data = (await response.json()) as TypeProvidersArray;
