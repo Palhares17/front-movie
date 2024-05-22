@@ -5,24 +5,10 @@ import Section from '@/components/ui/section';
 import Slider from '@/components/functional/Slider';
 import getTheatres from '@/api/actions/movie/getTheatres';
 import Cards from '@/components/functional/cards';
-import getMovies from '@/api/actions/movie/getMovies';
-import { TypeResultMovies } from '@/api/types/movies';
-import { Suspense } from 'react';
-
-import React from 'react';
-
-function RenderMovies() {
-  return (
-		<h1>Meus filmes</h1>
-  );
-}
+import RenderMovies from '@/components/functional/renderMovies';
 
 export default async function MoviesPage() {
-  const [genres, theatres, movies] = await Promise.all([
-    getGenres(),
-    getTheatres(),
-    getMovies(),
-  ]);
+  const [genres, theatres] = await Promise.all([getGenres(), getTheatres()]);
 
   return (
     <main>
@@ -48,6 +34,8 @@ export default async function MoviesPage() {
           })}
         </Slider>
       </Section>
+
+      <RenderMovies />
     </main>
   );
 }
