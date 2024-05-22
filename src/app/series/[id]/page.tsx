@@ -126,20 +126,18 @@ export default async function SeriesIdPage({ params }: TypeParams) {
       )}
 
       <Section text="Galeria">
-        <Suspense>
-          <Galery>
-            {galery.backdrops.map((item) => (
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
-                alt={`backdrop ${item.file_path}`}
-                width={200}
-                height={200}
-                key={item.file_path}
-                className={styles.image}
-              />
-            ))}
-          </Galery>
-        </Suspense>
+        <Galery>
+          {galery.backdrops.map((item) => (
+            <Image
+              src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+              alt={`backdrop ${item.file_path}`}
+              width={200}
+              height={200}
+              key={item.file_path}
+              className={styles.image}
+            />
+          ))}
+        </Galery>
       </Section>
     </main>
   );

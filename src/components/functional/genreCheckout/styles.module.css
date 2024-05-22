@@ -6,20 +6,21 @@
   cursor: pointer;
   border: 3px solid transparent;
   transition: all 0.1s;
+  color: var(--gray-000);
 }
 
 .text {
-  font-family: var(---font-secundary);
+  font-family: var(--font-secundary);
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--gray-000);
 }
 
 .checkboxWrapper {
   display: none;
 }
 
-.checked, .tag:hover {
+.checked,
+.tag:hover {
   background: var(--gray-000);
-	color: var(--gray-600);
+  color: var(--gray-600);
 }

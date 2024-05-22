@@ -33,7 +33,14 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  margin: 0px;
+}
+
 p {
+  font-family: var(--font-secundary);
   margin: 0px;
 }
 
@@ -58,6 +65,7 @@ input {
 
 a {
   text-decoration: none;
+	font-family: var(--font-title);
 }
 
 img {
