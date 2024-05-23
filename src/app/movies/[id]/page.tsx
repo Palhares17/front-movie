@@ -5,7 +5,6 @@ import SaveButton from '@/components/functional/save';
 import getProviders from '@/api/actions/movie/getWatchProviders';
 import getCreditsMovies, {
   CastMember,
-  TypeCaster,
 } from '@/api/actions/movie/getCreditsMovie';
 import Slider from '@/components/functional/Slider';
 import Cards from '@/components/functional/cards';
@@ -15,7 +14,6 @@ import Trailer from '@/components/ui/trailer';
 import Galery from '@/components/ui/galery';
 import getGalery from '@/api/actions/movie/getGalery';
 import Section from '@/components/ui/section';
-import { Suspense } from 'react';
 
 interface TypeParams {
   params: {
@@ -117,7 +115,6 @@ export default async function MovieIdPage({ params }: TypeParams) {
       )}
 
       <Section text="Galeria">
-        <Suspense>
           <Galery>
             {galery.backdrops.map((item) => (
               <Image
@@ -130,7 +127,6 @@ export default async function MovieIdPage({ params }: TypeParams) {
               />
             ))}
           </Galery>
-        </Suspense>
       </Section>
     </main>
   );

@@ -1,17 +1,17 @@
-// {
-// 	"git.enabled": true,
-// 	"files.exclude": {
-// 		"node_modules": true,
-// 		".prettierrc.json": true,
-// 		".gitignore": true,
-// 		"package.json": true,
-// 		"package-lock.json": true,
-// 		".eslintrc*": true,
-// 		"tsconfig.*": true,
-// 		"next-env.d.ts": true,
-// 		"next.config.mjs": true,
-// 		"yarn.lock": true,
-// 		"README.md": true,
-// 		".env": true
-// 	}
-// }
+{
+	"git.enabled": true,
+	"files.exclude": {
+		"node_modules": true,
+		".prettierrc.json": true,
+		".gitignore": true,
+		"package.json": true,
+		"package-lock.json": true,
+		".eslintrc*": true,
+		"tsconfig.*": true,
+		"next-env.d.ts": true,
+		"next.config.mjs": true,
+		"yarn.lock": true,
+		"README.md": true,
+		".env": true
+	}
+}
