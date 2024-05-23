@@ -5,8 +5,7 @@
 }
 
 :root {
-  --font-title: var(--font-poppins), 'sans-serif';
-  --font-secundary: var(--font-inter), 'sans-serif';
+  --font: var(--font-inter), 'sans-serif';
 
   --gray-000: #fff;
   --gray-100: #f2f2f2;
@@ -35,12 +34,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-title);
+  font-family: var(--font);
   margin: 0px;
 }
 
 p {
-  font-family: var(--font-secundary);
+  font-family: var(--font);
   margin: 0px;
 }
 
@@ -65,7 +64,7 @@ input {
 
 a {
   text-decoration: none;
-	font-family: var(--font-title);
+  font-family: var(--font);
 }
 
 img {
@@ -83,14 +82,14 @@ img {
 }
 
 .p-16 {
-  font-family: var(--font-secundary);
+  font-family: var(--font);
   font-size: 1rem;
   color: var(--gray-300);
   line-height: 190%;
 }
 
 .h3-32 {
-  font-family: var(--font-secundary);
+  font-family: var(--font);
   font-size: 2rem;
   color: var(--gray-000);
   font-weight: 700;

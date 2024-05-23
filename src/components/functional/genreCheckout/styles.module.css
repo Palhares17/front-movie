@@ -10,7 +10,7 @@
 }
 
 .text {
-  font-family: var(--font-secundary);
+  font-family: var(--font);
   font-size: 0.875rem;
   font-weight: 700;
 }

@@ -21,7 +21,7 @@
 
 .info {
   color: var(--gray-400);
-  font-family: var(--font-secundary);
+  font-family: var(--font);
   font-weight: 500;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .creators {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-	gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
 }
