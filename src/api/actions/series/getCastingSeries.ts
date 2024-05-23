@@ -21,12 +21,20 @@ interface TypeCasting {
 }
 
 export default async function getCastingSeries(movie_id: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${movie_id}/credits?language=pt-BR`,
-    options
-  );
+	try {
+		const response = await fetch(
+			`https://api.themoviedb.org/3/tv/${movie_id}/credits?language=pt-BR`,
+			options
+		);
 
-  const data = (await response.json()) as TypeCasting;
-	console.log(data.cast)
-  return data.cast;
+		if (!response.ok) {
+      throw new Error(`Erro ao obter detalhes da série (Status ${response.status})`);
+    }
+		const data = (await response.json()) as TypeCasting;
+		return data.cast;
+
+	} catch (error) {
+		console.error('Erro ao obter detalhes da série:', error);
+    return null;
+  }
 }

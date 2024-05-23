@@ -25,12 +25,23 @@ interface TypeProvidersArray {
 }
 
 export default async function getWatchProviderSeries(movie_id: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${movie_id}/watch/providers?locale=BR`,
-    options
-  );
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${movie_id}/watch/providers?locale=BR`,
+      options
+    );
 
-  const data = (await response.json()) as TypeProvidersArray;
+    if (!response.ok) {
+      throw new Error(
+        `Erro ao obter provedores de streaming da série (Status ${response.status})`
+      );
+    }
 
-  return data.results['BR'].flatrate;
+    const data = (await response.json()) as TypeProvidersArray;
+
+    return data.results['BR'].flatrate;
+  } catch (error) {
+    console.error('Erro ao obter provedores de streaming da série:', error);
+    return null;
+  }
 }

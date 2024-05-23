@@ -1,13 +1,23 @@
-import { headers } from 'next/headers';
 import { optionsReload } from '../../@constants/optionsReload';
 
 export default async function getTheatres() {
-  const response = await fetch(
-    'https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1&region=br',
-    optionsReload
-  );
+  try {
+    const response = await fetch(
+      'https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1&region=br',
+      optionsReload
+    );
 
-  const data = (await response.json()) as TypeTheatres;
+    if (!response.ok) {
+      throw new Error(
+        `Erro ao obter os filmes em exibição nos cinemas (Status ${response.status})`
+      );
+    }
 
-  return data.results;
+    const data = await response.json();
+
+    return data.results;
+  } catch (error) {
+    console.error('Erro ao obter os filmes em exibição nos cinemas:', error);
+    return null;
+  }
 }

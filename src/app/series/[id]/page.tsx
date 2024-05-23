@@ -34,26 +34,26 @@ export default async function SeriesIdPage({ params }: TypeParams) {
     <main className={`margin-64`}>
       <section className={`${styles.containerMovie}`}>
         <Image
-          src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-          alt={`poster ${details.name}`}
+          src={`https://image.tmdb.org/t/p/w500${details?.poster_path}`}
+          alt={`poster ${details?.name}`}
           width={300}
           height={480}
           className={styles.image}
         />
         <div>
-          <h1 className={`h3-32`}>{details.name}</h1>
+          <h1 className={`h3-32`}>{details?.name}</h1>
           <div className={`${styles.containerInfo} margin-8`}>
             <p className={styles.info}>
-              Temporadas: {details.number_of_seasons}
+              Temporadas: {details?.number_of_seasons}
             </p>
             <span className={styles.divider}></span>
             <p className={styles.info}>
-              Episódios: {details.number_of_episodes}
+              Episódios: {details?.number_of_episodes}
             </p>
           </div>
 
           <div className={`margin-32 ${styles.containerGenre}`}>
-            {details.genres.map((item) => (
+            {details?.genres.map((item) => (
               <span key={item.id} className={styles.genre}>
                 {item.name}
               </span>
@@ -61,7 +61,7 @@ export default async function SeriesIdPage({ params }: TypeParams) {
           </div>
 
           <p className={`margin-32 p-16 ${styles.overview}`}>
-            {details.overview}
+            {details?.overview}
           </p>
           <SaveButton />
         </div>
@@ -86,7 +86,7 @@ export default async function SeriesIdPage({ params }: TypeParams) {
         </div>
       </Section>
 
-      {details.created_by.length > 0 && (
+      {details && details.created_by.length > 0 && (
         <Section text="Criado Por:">
           <ul className={`container ${styles.creators}`}>
             {details.created_by.map((item) => (
@@ -119,30 +119,31 @@ export default async function SeriesIdPage({ params }: TypeParams) {
         </Slider>
       </Section>
 
-      {trailer[0] && (
+      {trailer && trailer[0] ? (
         <Section text="Treiler">
           <Trailer videoKey={trailer[0].key} />
         </Section>
-      )}
+      ) : null}
 
       <Section text="Galeria">
         <Galery>
-          {galery.backdrops.map((item, index) => {
-            if (index < 16) {
-              return (
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
-                  alt={`backdrop ${item.file_path}`}
-                  width={200}
-                  height={200}
-                  key={item.file_path}
-                  className={styles.image}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
+          {galery &&
+            galery.backdrops.map((item, index) => {
+              if (index < 12) {
+                return (
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+                    alt={`backdrop ${item.file_path}`}
+                    width={200}
+                    height={200}
+                    key={item.file_path}
+                    className={styles.image}
+                  />
+                );
+              } else {
+                return null;
+              }
+            })}
         </Galery>
       </Section>
     </main>

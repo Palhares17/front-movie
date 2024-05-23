@@ -4,12 +4,21 @@ import { TypeResultsSeries } from '@/api/types/series';
 import { optionsReload } from '../../@constants/optionsReload';
 
 export default async function getSeries(page: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=${page}`,
-    optionsReload
-  );
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=${page}`,
+      optionsReload
+    );
 
-  const data = await response.json();
-  const dataResults = data.results as TypeResultsSeries[];
-  return dataResults;
+    if (!response.ok) {
+      throw new Error(`Erro ao obter séries (Status ${response.status})`);
+    }
+
+    const data = await response.json();
+    const dataResults = data.results as TypeResultsSeries[];
+    return dataResults;
+  } catch (error) {
+    console.error('Erro ao obter séries:', error);
+    return null;
+  }
 }

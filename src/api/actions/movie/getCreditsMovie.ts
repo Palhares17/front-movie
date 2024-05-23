@@ -23,11 +23,23 @@ export interface TypeCaster {
 }
 
 export default async function getCreditsMovies(movie_id: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=pt-BR`,
-    optionsReload
-  );
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=pt-BR`,
+      optionsReload
+    );
 
-  const data = (await response.json()) as TypeCaster;
-  return data.cast;
+    if (!response.ok) {
+      throw new Error(
+        `Erro ao obter os créditos do filme (Status ${response.status})`
+      );
+    }
+
+    const data = (await response.json()) as TypeCaster;
+
+    return data.cast;
+  } catch (error) {
+    console.error('Erro ao obter os créditos do filme:', error);
+    return null;
+  }
 }

@@ -30,26 +30,30 @@ export default async function MovieIdPage({ params }: TypeParams) {
     getGalery(params.id),
   ]);
 
-  const date = details.release_date;
-  const year = date.substring(0, 4);
+  const date = details?.release_date;
+  const year = date?.substring(0, 4);
+  let minutesComplete;
+  let hoursComplete;
 
-  const minutes = details.runtime;
-  const hours = minutes / 60;
-  const hoursComplete = Math.floor(hours);
-  const minutesComplete = Math.round((hours - hoursComplete) * 60);
+  if (details !== null) {
+    const minutes = details.runtime;
+    const hours = minutes / 60;
+    hoursComplete = Math.floor(hours);
+    minutesComplete = Math.round((hours - hoursComplete) * 60);
+  }
 
   return (
     <main className={`margin-64`}>
       <section className={`${styles.containerMovie}`}>
         <Image
-          src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-          alt={`poster ${details.title}`}
+          src={`https://image.tmdb.org/t/p/w500${details?.poster_path}`}
+          alt={`poster ${details?.title}`}
           width={300}
           height={480}
           className={styles.image}
         />
         <div>
-          <h1 className={`h3-32`}>{details.title}</h1>
+          <h1 className={`h3-32`}>{details?.title}</h1>
           <div className={`${styles.containerInfo} margin-8`}>
             <p className={styles.info}>{year}</p>
             <span className={styles.divider}></span>
@@ -59,7 +63,7 @@ export default async function MovieIdPage({ params }: TypeParams) {
           </div>
 
           <div className={`margin-32 ${styles.containerGenre}`}>
-            {details.genres.map((item) => (
+            {details?.genres.map((item) => (
               <span key={item.id} className={styles.genre}>
                 {item.name}
               </span>
@@ -67,7 +71,7 @@ export default async function MovieIdPage({ params }: TypeParams) {
           </div>
 
           <p className={`margin-32 p-16 ${styles.overview}`}>
-            {details.overview}
+            {details?.overview}
           </p>
           <SaveButton />
         </div>
@@ -94,39 +98,47 @@ export default async function MovieIdPage({ params }: TypeParams) {
 
       <Section text="Elenco">
         <Slider>
-          {credit.map((item: CastMember) => {
-            return (
-              <CardsCasting
-                title={item.name}
-                image={item.profile_path}
-                key={item.id}
-                id={item.id}
-                character={item.character}
-              />
-            );
-          })}
+          {credit &&
+            credit.map((item: CastMember) => {
+              return (
+                <CardsCasting
+                  title={item.name}
+                  image={item.profile_path}
+                  key={item.id}
+                  id={item.id}
+                  character={item.character}
+                />
+              );
+            })}
         </Slider>
       </Section>
 
-      {trailer[0] && (
+      {trailer && trailer[0] ? (
         <Section text="Treiler">
           <Trailer videoKey={trailer[0].key} />
         </Section>
-      )}
+      ) : null}
 
       <Section text="Galeria">
-          <Galery>
-            {galery.backdrops.map((item) => (
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
-                alt={`backdrop ${item.file_path}`}
-                width={200}
-                height={200}
-                key={item.file_path}
-                className={styles.image}
-              />
-            ))}
-          </Galery>
+        <Galery>
+          {galery &&
+            galery.backdrops.map((item, index) => {
+              if (index < 12) {
+                return (
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+                    alt={`backdrop ${item.file_path}`}
+                    width={200}
+                    height={200}
+                    key={item.file_path}
+                    className={styles.image}
+                  />
+                );
+              } else {
+                return null;
+              }
+            })}
+        </Galery>
       </Section>
     </main>
   );

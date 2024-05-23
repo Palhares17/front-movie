@@ -4,12 +4,21 @@ import { options } from '../@constants/options';
 import { TypeColectionGenre } from '../types/genre';
 
 export default async function getGenres() {
-  const response = await fetch(
-    'https://api.themoviedb.org/3/genre/movie/list?language=pt-BRs',
-    options
-  );
+  try {
+    const response = await fetch(
+      'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR',
+      options
+    );
 
-  const data = (await response.json()) as TypeColectionGenre;
+    if (!response.ok) {
+      throw new Error(`Erro ao obter os gêneros de filmes (Status ${response.status})`);
+    }
 
-  return data.genres;
+    const data = await response.json() as TypeColectionGenre;
+
+    return data.genres;
+  } catch (error) {
+    console.error('Erro ao obter os gêneros de filmes:', error);
+    return null;
+  }
 }
