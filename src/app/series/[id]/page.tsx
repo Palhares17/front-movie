@@ -105,7 +105,7 @@ export default async function SeriesIdPage({ params }: TypeParams) {
 
       <Section text="Elenco">
         <Slider>
-          {credit.map((item: CastMemberSeries) => {
+          {credit?.map((item: CastMemberSeries) => {
             return (
               <CardsCasting
                 title={item.name}
@@ -127,16 +127,22 @@ export default async function SeriesIdPage({ params }: TypeParams) {
 
       <Section text="Galeria">
         <Galery>
-          {galery.backdrops.map((item) => (
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
-              alt={`backdrop ${item.file_path}`}
-              width={200}
-              height={200}
-              key={item.file_path}
-              className={styles.image}
-            />
-          ))}
+          {galery.backdrops.map((item, index) => {
+            if (index < 16) {
+              return (
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+                  alt={`backdrop ${item.file_path}`}
+                  width={200}
+                  height={200}
+                  key={item.file_path}
+                  className={styles.image}
+                />
+              );
+            } else {
+              return null;
+            }
+          })}
         </Galery>
       </Section>
     </main>

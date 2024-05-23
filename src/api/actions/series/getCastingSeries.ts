@@ -10,7 +10,7 @@ export interface CastMemberSeries {
   name: string;
   original_name: string;
   popularity: number;
-  profile_path?: string;
+  profile_path: string | null;
   character: string;
   credit_id: string;
   order: number;
@@ -27,5 +27,6 @@ export default async function getCastingSeries(movie_id: number) {
   );
 
   const data = (await response.json()) as TypeCasting;
+	console.log(data.cast)
   return data.cast;
 }

@@ -4,7 +4,7 @@ import React from 'react';
 
 interface TypeCard {
   title: string;
-  image?: string;
+  image: string | null | undefined;
   media_type?: string;
   id: number;
   character?: string;
@@ -19,7 +19,7 @@ export default function CardsCasting({
 }: TypeCard) {
   return (
     <div className={`margin-32 ${styles.card}`}>
-      {image && (
+      {image ? (
         <>
           <Image
             src={`https://image.tmdb.org/t/p/w500/${image}.jpg`}
@@ -32,6 +32,12 @@ export default function CardsCasting({
           <h4 className={styles.nameFilm}>{title}</h4>
           <p className={styles.character}>{character}</p>
         </>
+      ) : (
+        <div>
+          <span className={styles.noImage}></span>
+          <h4 className={styles.nameFilm}>{title}</h4>
+          <p className={styles.character}>{character}</p>
+        </div>
       )}
     </div>
   );
