@@ -1,23 +1,16 @@
+'use server';
+
 import { optionsReload } from '../../@constants/optionsReload';
+import { TypeResultMovies } from '../../types/movies';
 
-export default async function getTheatres() {
-  try {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1&region=br',
-      optionsReload
-    );
+export default async function getMoviesWeek() {
+  const response = await fetch(
+    'https://api.themoviedb.org/3/trending/movie/week?language=pt-BR',
+    optionsReload
+  );
 
-    if (!response.ok) {
-      throw new Error(
-        `Erro ao obter os filmes em exibição nos cinemas (Status ${response.status})`
-      );
-    }
+  const data = await response.json();
+  const dataResults = data.results as TypeResultMovies[];
 
-    const data = await response.json();
-
-    return data.results;
-  } catch (error) {
-    console.error('Erro ao obter os filmes em exibição nos cinemas:', error);
-    return null;
-  }
+  return dataResults;
 }

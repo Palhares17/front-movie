@@ -12,15 +12,24 @@ interface TypeCard {
 
 export default function Cards({ title, image, media_type, id }: TypeCard) {
   let route;
+  let isPathImage;
+
   if (media_type === 'tv') {
     route = `series/${id}`;
   } else {
     route = `movies/${id}`;
   }
 
+  if (image === undefined || image === null) {
+    isPathImage = false;
+  } else {
+    isPathImage = true;
+  }
+
+
   return (
     <div className={`margin-32 ${styles.card}`}>
-      {image && (
+      {isPathImage ? (
         <Link href={route}>
           <Image
             src={`https://image.tmdb.org/t/p/w500${image}`}
@@ -31,6 +40,11 @@ export default function Cards({ title, image, media_type, id }: TypeCard) {
           />
           <h4 className={styles.nameFilm}>{title}</h4>
         </Link>
+      ) : (
+        <div>
+          <span className={styles.noImage}></span>
+          <h4 className={styles.nameFilm}>{title}</h4>
+        </div>
       )}
     </div>
   );

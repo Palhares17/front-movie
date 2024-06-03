@@ -17,9 +17,16 @@ export default function CardsCasting({
   media_type,
   id,
 }: TypeCard) {
+  let isPathImage;
+  if (image === null) {
+    isPathImage = false;
+  } else {
+    isPathImage = true;
+  }
+
   return (
     <div className={`margin-32 ${styles.card}`}>
-      {image ? (
+      {isPathImage ? (
         <>
           <Image
             src={`https://image.tmdb.org/t/p/w500/${image}.jpg`}

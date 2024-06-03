@@ -11,14 +11,14 @@ export default async function getGenres() {
     );
 
     if (!response.ok) {
-      throw new Error(`Erro ao obter os gêneros de filmes (Status ${response.status})`);
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const data = await response.json() as TypeColectionGenre;
+    const data = (await response.json()) as TypeColectionGenre;
 
     return data.genres;
   } catch (error) {
-    console.error('Erro ao obter os gêneros de filmes:', error);
-    return null;
+    console.error('Error fetching genres:', error);
+    throw error;
   }
 }

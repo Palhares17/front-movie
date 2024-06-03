@@ -3,7 +3,6 @@
 import styles from './styles.module.css';
 
 export default function Trailer({ videoKey }: { videoKey: string }) {
-  // console.log(videoKey);
   return (
     <div className={`container margin-32`}>
       <iframe

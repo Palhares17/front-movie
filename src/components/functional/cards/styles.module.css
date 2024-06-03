@@ -35,3 +35,38 @@
 .hover:hover {
   box-shadow: 0 0 0 5px #3b83f65f;
 }
+
+.noImage {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: #3d3d3d;
+  height: 350px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.noImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #525252 50%,
+    transparent 100%
+  );
+  animation: skeleton-loading 1.5s infinite linear;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

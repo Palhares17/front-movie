@@ -24,22 +24,11 @@ interface TypeProvidersArray {
 }
 
 export default async function getProviders(movie_id: number) {
-  try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers`,
-      options
-    );
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers`,
+    options
+  );
 
-    if (!response.ok) {
-      throw new Error(
-        `Erro ao obter os provedores de streaming do filme (Status ${response.status})`
-      );
-    }
-
-    const data = (await response.json()) as TypeProvidersArray;
-    return data.results['BR']?.flatrate;
-  } catch (error) {
-    console.error('Erro ao obter os provedores de streaming do filme:', error);
-    return null;
-  }
+  const data = (await response.json()) as TypeProvidersArray;
+  return data.results['BR']?.flatrate;
 }

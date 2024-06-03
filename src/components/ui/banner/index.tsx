@@ -31,7 +31,7 @@ export default function Banner(movies: any) {
   };
 
   const handlePrev = () => {
-    if (index === movies.props.length - 1) {
+    if (index === 0) {
       setIndex(0);
     } else {
       setIndex(index - 1);
