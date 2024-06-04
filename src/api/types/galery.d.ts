@@ -9,5 +9,5 @@ export interface TypeBackdrop {
 }
 
 export interface TypeBackdropData {
-  backdrops: Backdrop[];
+  backdrops: TypeBackdrop[];
 }

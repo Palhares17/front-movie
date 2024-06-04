@@ -16,7 +16,9 @@ export default function RenderSeries() {
     async function fetchData() {
       setIsLoading(true);
       const seriesData = await getSeries(page);
-      setSeries((prevSeries) => [...prevSeries, ...seriesData]);
+      if (seriesData) {
+        setSeries((prevSeries) => [...prevSeries, ...seriesData]);
+      }
       setIsLoading(false);
     }
 

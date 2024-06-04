@@ -29,6 +29,8 @@ export default async function SeriesIdPage({ params }: TypeParams) {
     getTrailerSeries(params.id),
     getGalerySeries(params.id),
   ]);
+	
+	console.log(details);
 
   return (
     <main className={`margin-64`}>
@@ -128,7 +130,7 @@ export default async function SeriesIdPage({ params }: TypeParams) {
       <Section text="Galeria">
         <Galery>
           {galery &&
-            galery.backdrops.map((item, index) => {
+            galery.map((item, index) => {
               if (index < 12) {
                 return (
                   <Image

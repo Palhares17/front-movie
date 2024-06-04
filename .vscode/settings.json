@@ -12,6 +12,6 @@
 		"next.config.mjs": true,
 		"yarn.lock": true,
 		"README.md": true,
-		".env": false
+		".env": true
 	}
 }

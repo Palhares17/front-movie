@@ -6,6 +6,7 @@ import Slider from '@/components/functional/Slider';
 import getTheatres from '@/api/actions/movie/getTheatres';
 import Cards from '@/components/functional/cards';
 import RenderMovies from '@/components/functional/renderMovies';
+import { TypeTheatresResults } from '@/api/types/theatres';
 
 export default async function MoviesPage() {
   const [genres, theatres] = await Promise.all([getGenres(), getTheatres()]);

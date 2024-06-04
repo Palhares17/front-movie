@@ -1,4 +1,4 @@
-interface Criador {
+export interface Criador {
   id: number;
   credit_id: string;
   name: string;
@@ -7,12 +7,12 @@ interface Criador {
   profile_path?: string;
 }
 
-interface Genero {
+export interface Genero {
   id: number;
   name: string;
 }
 
-interface UltimoEpisodio {
+export interface UltimoEpisodio {
   id: number;
   overview: string;
   name: string;
@@ -28,7 +28,7 @@ interface UltimoEpisodio {
   still_path: string | null;
 }
 
-interface ProximaEpisodio {
+export interface ProximaEpisodio {
   id: number;
   overview: string;
   name: string;
@@ -44,26 +44,26 @@ interface ProximaEpisodio {
   still_path: string | null;
 }
 
-interface Rede {
+export interface Rede {
   id: number;
   logo_path: string | null;
   name: string;
   origin_country: string;
 }
 
-interface CompanhiaProducao {
+export interface CompanhiaProducao {
   id: number;
   logo_path: string | null;
   name: string;
   origin_country: string;
 }
 
-interface PaisProducao {
+export interface PaisProducao {
   iso_3166_1: string;
   name: string;
 }
 
-interface Temporada {
+export interface Temporada {
   air_date: string | null;
   episode_count: number;
   id: number;
@@ -74,13 +74,13 @@ interface Temporada {
   vote_average: number;
 }
 
-interface IdiomaFalado {
+export interface IdiomaFalado {
   english_name: string;
   iso_639_1: string;
   name: string;
 }
 
-interface TypeTVShow {
+export interface TypeTVShow {
   adult: boolean;
   backdrop_path: string;
   created_by: Criador[];

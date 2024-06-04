@@ -1,3 +1,5 @@
+// actions/movie/getCreditsMovies.ts
+
 'use server';
 
 import { optionsReload } from '../../@constants/optionsReload';
@@ -22,12 +24,23 @@ export interface TypeCaster {
   cast: CastMember[];
 }
 
-export default async function getCreditsMovies(movie_id: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=pt-BR`,
-    optionsReload
-  );
+export default async function getCreditsMovies(
+  movie_id: number
+): Promise<CastMember[]> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie_id}/credits?language=pt-BR`,
+      optionsReload
+    );
 
-  const data = (await response.json()) as TypeCaster;
-  return data.cast;
+    if (!response.ok) {
+      throw new Error(`Failed to fetch movie credits: ${response.statusText}`);
+    }
+
+    const data = (await response.json()) as TypeCaster;
+    return data.cast;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }

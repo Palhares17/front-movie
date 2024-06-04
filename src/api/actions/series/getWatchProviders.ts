@@ -1,7 +1,6 @@
 'use server';
 
 import { options } from '../../@constants/options';
-import { TypeDetailsMovie } from '../../types/detailsMovies';
 
 interface TypeProvider {
   logo_path: string;
@@ -24,13 +23,30 @@ interface TypeProvidersArray {
   };
 }
 
-export default async function getWatchProviderSeries(movie_id: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${movie_id}/watch/providers?locale=BR`,
-    options
-  );
+export default async function getWatchProviderSeries(
+  movie_id: number
+): Promise<TypeProvider[] | undefined> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${movie_id}/watch/providers?locale=BR`,
+      options
+    );
 
-  const data = (await response.json()) as TypeProvidersArray;
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch TV series watch providers: ${response.statusText}`
+      );
+    }
 
-  return data.results['BR'].flatrate;
+    const data = (await response.json()) as TypeProvidersArray;
+
+    // Verificamos se existem provedores flatrate disponíveis para o país BR
+    const flatrateProviders = data.results['BR']?.flatrate;
+
+    // Se existirem provedores flatrate, retornamos. Caso contrário, retornamos undefined.
+    return flatrateProviders || undefined;
+  } catch (error) {
+    console.error('Error fetching TV series watch providers:', error);
+    return undefined;
+  }
 }

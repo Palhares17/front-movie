@@ -1,9 +1,9 @@
 'use server';
 
 import { options } from '../@constants/options';
-import { TypeColectionGenre } from '../types/genre';
+import { TypeColectionGenre, Genre} from '../types/genre';
 
-export default async function getGenres() {
+export default async function getGenres(): Promise<Genre[]> {
   try {
     const response = await fetch(
       'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR',
@@ -15,10 +15,9 @@ export default async function getGenres() {
     }
 
     const data = (await response.json()) as TypeColectionGenre;
-
     return data.genres;
   } catch (error) {
     console.error('Error fetching genres:', error);
-    throw error;
+    return [];
   }
 }

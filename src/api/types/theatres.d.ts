@@ -1,9 +1,9 @@
-interface TypeDateRange {
+export interface TypeDateRange {
   maximum: string;
   minimum: string;
 }
 
-interface TypeTheatresResults {
+export interface TypeTheatresResults {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -20,8 +20,8 @@ interface TypeTheatresResults {
   vote_count: number;
 }
 
-interface TypeTheatres {
+export interface TypeTheatres {
   dates: DateRange;
   page: number;
-  results: Movie[];
+  results: TypeTheatresResults[];
 }

@@ -54,7 +54,7 @@ export default async function Home() {
 
       <Section text="Séries da semana">
         <Slider>
-          {seriesWeek.map((item: TypeResultsSeries) => {
+          {seriesWeek?.map((item: TypeResultsSeries) => {
             return (
               <Cards
                 title={item.name}

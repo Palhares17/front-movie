@@ -1,3 +1,5 @@
+// actions/movie/getWatchProviders.ts
+
 'use server';
 
 import { options } from '../../@constants/options';
@@ -23,12 +25,23 @@ interface TypeProvidersArray {
   };
 }
 
-export default async function getProviders(movie_id: number) {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers`,
-    options
-  );
+export default async function getProviders(
+  movie_id: number
+): Promise<TypeProvider[] | undefined> {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers`,
+      options
+    );
 
-  const data = (await response.json()) as TypeProvidersArray;
-  return data.results['BR']?.flatrate;
+    if (!response.ok) {
+      throw new Error(`Failed to fetch providers: ${response.statusText}`);
+    }
+
+    const data = (await response.json()) as TypeProvidersArray;
+    return data.results['BR']?.flatrate;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
 }
