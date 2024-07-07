@@ -30,8 +30,6 @@ export default async function SeriesIdPage({ params }: TypeParams) {
     getGalerySeries(params.id),
   ]);
 	
-	console.log(details);
-
   return (
     <main className={`margin-64`}>
       <section className={`${styles.containerMovie}`}>

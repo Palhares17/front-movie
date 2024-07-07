@@ -18,7 +18,6 @@ export default async function getTheatres(): Promise<TypeTheatresResults[]> {
 
     const data = (await response.json()) as TypeTheatres;
     const results = data.results;
-    console.log(results);
 
     return data.results;
   } catch (error) {
